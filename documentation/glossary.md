@@ -16,4 +16,33 @@ user makes order->one-many->one-zero
 order has products->many-many->zero-one  
 order has payment->one-one->one-one  
 user has payment details->one-many->one-zero  
+# Attributes  
+Attribute->Maxima->Minima  
+u_id->unique->required  
+name->singular->required  
+pwd->unique->required  
+email->unique->required  
+phn_no->unique->required  
+acc_type->singular->required  
+p_id->unique->required  
+p_name->singular->required  
+p_desc->singular->required  
+p_price->singular->required  
+p_id->unique->required  
+c_id->unique->required  
+c_id->unique->required  
+c_name->unique->required  
+o_id->unique->required  
+u_id->unique->required  
+pay_id->unique->required  
+addr_id->unique->required  
+delivery_date->singular->optional  
+o_id->unique->required  
+p_id->unique->required  
+pay_id->unique->required  
+card_no->unique->required  
+u_id->unique->required  
+addr_id->unique->required  
+u_id->unique->required  
+addess->singular->required  
 
