@@ -98,42 +98,42 @@ order_detail->order_history=>Cascade
 # Implementing Attributes
 |Attribute|Type|Cardinality|
 |:--------|:-----|:-----|
-|user_id|||
-|user_name|||
-|password|||
-|email|||
-|phone_number|||
-|account_type|||
-|product_id|||
-|product_name|||
-|description|||
-|price|||
-|user_id|||
-|product_id|||
-|category_id|||
-|category_id|||
-|category_name|||
-|order_id|||
-|user_id|||
-|payment_id|||
-|address_id|||
-|delivery_date|||
-|order_id|||
-|product_id|||
-|quantity|||
-|payment_id|||
-|card_number|||
-|user_id|||
-|address_id|||
-|user_id|||
-|address|||
-|product_id|||
-|user_id|||
-|quantity|||
-|user_id|||
-|product_id|||
-|rating|||
-|review|||
+|user_id|INT|NOT NULL|
+|user_name|VARCHAR|NOT NULL|
+|password|VARCHAR|NOT NULL|
+|email|VARCHAR|NOT NULL|
+|phone_number|VARCHAR|NOT NULL|
+|account_type|ENUM|NOT NULL|
+|product_id|INT|NOT NULL|
+|product_name|VARCHAR|NOT NULL|
+|description|VARCHAR|NOT NULL|
+|price|DECIMAL|NOT NULL|
+|user_id|INT|NOT NULL|
+|product_id|INT|NOT NULL|
+|category_id|INT|NOT NULL|
+|category_id|INT|NOT NULL|
+|category_name|VARCHAR|NOT NULL|
+|order_id|INT|NOT NULL|
+|user_id|INT|NOT NULL|
+|payment_id|INT|NOT NULL|
+|address_id|INT|NOT NULL|
+|delivery_date|DATE|NULL|
+|order_id|INT|NOT NULL|
+|product_id|INT|NOT NULL|
+|quantity|INT|NOT NULL|
+|payment_id|INT|NOT NULL|
+|card_number|VARCHAR|NOT NULL|
+|user_id|INT|NOT NULL|
+|address_id|INT|NOT NULL|
+|user_id|INT|NOT NULL|
+|address|VARCHAR|NOT NULL|
+|product_id|INT|NOT NULL|
+|user_id|INT|NOT NULL|
+|quantity|INT|NOT NULL|
+|user_id|INT|NOT NULL|
+|product_id|INT|NOT NULL|
+|rating|INT|NOT NULL|
+|review|VARCHAR|NULL|
 
 
 # Plural Attribute
