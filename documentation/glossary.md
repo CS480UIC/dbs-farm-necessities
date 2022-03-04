@@ -81,6 +81,34 @@ user->order_history=>Restrict
 address->order_history=>Restrict
 payment_detail->order_history=>Restrict  
 
-#Attribute
+# Attribute
 |Attribute|Type|Cardinality|
 |:--------|:-----|:-----|
+|user_id|unique|required|
+|user_name|singular|required|
+|password|unique|required|
+|email|unique|required|
+|phone_number|unique|required|
+|account_type|singular|required|
+|product_id|unique|required|
+|product_name|singular|required|
+|description|singular|required|
+|price|singular|required|
+|product_id|unique|required|
+|category_id|unique|required|
+|category_id|unique|required|
+|category_name|unique|required|
+|order_id|unique|required|
+|user_id|unique|required|
+|payment_id|unique|required|
+|address_id|unique|required|
+|delivery_date|singular|optional|
+|order_id|unique|required|
+|product_id|unique|required|
+|payment_id|unique|required|
+|card_number|unique|required|
+|user_id|unique|required|
+|address_id|unique|required|
+|user_id|unique|required|
+|address|singular|required|
+
