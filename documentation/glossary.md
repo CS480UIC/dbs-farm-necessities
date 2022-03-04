@@ -53,3 +53,34 @@
 |user_id|unique|required|
 |address|singular|required|
 
+# Dependent Entities  
+|Entity|Relationship|
+|:--------|:-----|
+|product_category|product_catgeory-Has-product And categoty|
+|payment_detail|payment_detail-BelogsTo-user|
+|address|address-BelongsTo-user|
+|order_history|order_history-Has-user and address and payment_detail|
+|product|product-BelongsTo-user|
+|rating|rating-Has-user and product|
+|cart|cart-Has-user and product|
+
+# Subtype and Supertype entities  
+There are no subtype and supertype entities  
+
+# Cascade and Restrict rule  
+category->product_category=>Cascade
+product->product_category=>Cascade
+user->address=>Cascade
+user->payment_detail=>Cascade
+user->cart=>Cascade
+product->cart=>Cascade
+user->rating=>Restrict
+product->rating->Cascade
+user->product=>Cascade
+user->order_history=>Restrict
+address->order_history=>Restrict
+payment_detail->order_history=>Restrict  
+
+#Attribute
+|Attribute|Type|Cardinality|
+|:--------|:-----|:-----|
