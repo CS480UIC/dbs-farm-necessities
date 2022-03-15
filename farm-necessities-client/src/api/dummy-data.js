@@ -36,3 +36,28 @@ export const profile = {
     card_number: ['1111222233334444', '5555666677778888'],
   },
 };
+
+export const cart = {
+  data: [
+    {
+      product_id: 0,
+      category_id: 0,
+      user_id: 0,
+      name: 'J & M 1384L-LW',
+      description: 'J & M 13 TON RUNNING GEAR, LOW CLEARANCE, LESS WHEELS',
+      price: 5000,
+      image: `https://picsum.photos/250?random=${Math.random()}`,
+      quantity: 1,
+    },
+    {
+      product_id: 3,
+      category_id: 1,
+      user_id: 1,
+      name: 'H & S HT8',
+      description: 'SKU 0004',
+      price: 14000,
+      image: `https://d2j6dbq0eux0bg.cloudfront.net/images/16856293/1151901676.jpg`,
+      quantity: 2,
+    },
+  ],
+};
