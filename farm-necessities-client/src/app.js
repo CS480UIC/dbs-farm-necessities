@@ -1,4 +1,3 @@
-// #imports
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -9,8 +8,8 @@ import Cart from './components/cart/cart';
 import Contact from './components/contact/contact';
 import Home from './components/home/home';
 import Navigation from './components/navigation/navigation';
+import Profile from './components/profile/profile';
 import Shop from './components/shop/shop';
-// #endregion
 
 const App = () => (
   <BrowserRouter>
@@ -22,6 +21,7 @@ const App = () => (
         <Route path="/auth" exact element={<Auth />} />
         <Route path="/contact" exact element={<Contact />} />
         <Route path="/cart" exact element={<Cart />} />
+        <Route path="/profile" exact element={<Profile />} />
         <Route path="/shop" exact element={<Shop />} />
       </Routes>
     </Container>

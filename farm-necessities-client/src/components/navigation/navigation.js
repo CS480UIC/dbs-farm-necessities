@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import './navigation.css';
 
 const Navigation = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -31,31 +31,34 @@ const Navigation = () => {
         className={`${navDisplay} ${scrollPos === 0 ? 'nav-max-height' : ''}`}
         expanded={expanded}
       >
-        <Navbar.Brand className="py-0 px-1" href="/">
+        <Navbar.Brand className="py-0 px-1" as={Link} to="/">
           Equip Your Farm
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-collapse" onClick={() => setExpanded(expanded ? false : 'expanded')} />
         <Navbar.Collapse>
           <Nav className="mx-auto">
-            <Nav.Link onClick={() => setExpanded(false)} href="/">
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} href="/shop">
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/shop">
               Shop
             </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} href="/about">
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/about">
               About
             </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} href="/contact">
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/contact">
               Contact
             </Nav.Link>
           </Nav>
           <Nav className="me-auto">
-            <Nav.Link onClick={() => setExpanded(false)} href="/auth">
-              Auth
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} href="/cart">
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/cart">
               Cart
+            </Nav.Link>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/profile">
+              Profile
+            </Nav.Link>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/auth">
+              Login
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
