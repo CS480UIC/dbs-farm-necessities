@@ -55,6 +55,15 @@ const Navigation = () => {
             <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/payment-detail">
               Payment Detail
             </Nav.Link>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/order-detail">
+              Order Detail
+            </Nav.Link>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/address">
+              Address
+            </Nav.Link>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/order-history">
+              Order History
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
