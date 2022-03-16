@@ -44,5 +44,20 @@ Initial entities-product, categories, product_type, user, user_type, orders, lea
 ![Screenshot (18)](https://user-images.githubusercontent.com/34371256/158513053-eac3a991-7405-4717-92e5-f5b3eb56355a.png)
 ![Screenshot (19)](https://user-images.githubusercontent.com/34371256/158513065-8cc9cf65-ecb6-4bf9-bcd9-a2b093ed8a4d.png)
 ![Screenshot (20)](https://user-images.githubusercontent.com/34371256/158513069-9c90bbd6-f0f1-442e-acfc-65cdb7181cbf.png)
+## CRUD for Order-Detail
+![Create](https://user-images.githubusercontent.com/99444326/158513453-36ef982f-b270-4466-8141-d7c845113413.jpg)
+![Screenshot 2022-03-15 223842](https://user-images.githubusercontent.com/99444326/158513486-9d344610-b0ba-463d-87f7-4085df7d7d9e.jpg)
+![Screenshot 2022-03-15 223857](https://user-images.githubusercontent.com/99444326/158513504-f92dc078-f4ff-4c25-83cc-b478435e78c9.jpg)
+![del](https://user-images.githubusercontent.com/99444326/158513519-ce6fa969-2c14-4523-b9c9-ba40dbceea53.jpg)
+## CRUD for Address
+![create](https://user-images.githubusercontent.com/99444326/158513558-1a7d606f-b90f-4a8c-97cb-6a5c8cbd20ec.jpg)
+![read](https://user-images.githubusercontent.com/99444326/158513568-c953f9d4-bee5-4577-a4ef-7a7f0ac41fcf.jpg)
+![update](https://user-images.githubusercontent.com/99444326/158513574-b6e50213-7a17-48b2-bc3e-0f747f9b2c04.jpg)
+![delete](https://user-images.githubusercontent.com/99444326/158513589-c68d22f6-eb5d-4277-b7c8-996ca6e9aca5.jpg)
+## CRUD for Order-History
+![create](https://user-images.githubusercontent.com/99444326/158513624-f6cd6827-588f-4ffc-b536-fc0aef2c2f8e.jpg)
+![read](https://user-images.githubusercontent.com/99444326/158513630-126fe8e4-7d20-4d35-9abb-d15c00b93bc7.jpg)
+![update](https://user-images.githubusercontent.com/99444326/158513636-662ba202-ef68-4197-b94a-966ad4073c8d.jpg)
+![delete](https://user-images.githubusercontent.com/99444326/158513643-ffb8be25-ffb7-496a-9f02-59beac1c900a.jpg)
 
 
