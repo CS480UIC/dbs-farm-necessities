@@ -1,0 +1,33 @@
+a {
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  position: relative;
+  transition: var(--transition);
+  cursor: pointer;
+  color: var(--orange);
+}
+
+a:hover,
+a:focus {
+  color: var(--orange);
+}
+
+:focus {
+  outline: 2px dashed var(--orange);
+}
+
+::selection {
+  background-color: var(--slate);
+  color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--dark-slate);
+  font-weight: 600;
+  line-height: 1.1;
+}
