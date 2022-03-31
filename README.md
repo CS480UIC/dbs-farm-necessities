@@ -7,6 +7,7 @@
 farm_necessities
 # Author(s)
 Mayur Mule
+Aakash Jain
 # Description
 We are interested in creating a portal where a farmer can buy equipment online, thereby eliminating middlemen. In the future our scope would expand to allowing farmers to buy from their loans, through emi plans.  
 The data in the database would consist of Farmer - Name, Emails, Number, Address, Payment History, Payment method. It would also include all the equipment, dates, prices, desc, quantity.  
