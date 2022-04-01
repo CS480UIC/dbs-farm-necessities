@@ -9,11 +9,11 @@ const PaymentDetail = () => {
     <Styles>
       <Container fluid>
         {operations.map((operation) => (
-          <div className="form-container">
+          <div className="form-container" key={operation}>
             <h3>{operation}</h3>
             <Form>
               {columns.map((field) => (
-                <Form.Group as={Row} className="mb-3">
+                <Form.Group as={Row} className="mb-3" key={field}>
                   <Form.Label column sm={2}>
                     {field}
                   </Form.Label>
