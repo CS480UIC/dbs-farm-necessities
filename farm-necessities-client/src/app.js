@@ -15,6 +15,7 @@ import PaymentDetail from './components/payment-detail/payment-detail';
 import ProductCategory from './components/product-category/product-category';
 import Product from './components/product/product';
 import Rating from './components/rating/rating';
+import Users from './components/users/users';
 import Fonts from './styles/fonts';
 
 const App = () => (
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/order-detail" exact element={<OrderDetail />} />
           <Route path="/address" exact element={<Address />} />
           <Route path="/order-history" exact element={<OrderHistory />} />
+          <Route path="/users" exact element={<Users />} />
           <Route path="/auth" exact element={<Auth />} />
         </Routes>
       </Container>
