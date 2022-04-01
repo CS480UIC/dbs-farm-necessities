@@ -93,7 +93,9 @@ const Navigation = () => {
                 Rating
               </NavDropdown.Item>
             </NavDropdown>
-            
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/users">
+              Users
+            </Nav.Link>
             {user?.result ? (
               <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
                 <Button onClick={handleLogout}>Logout</Button>
