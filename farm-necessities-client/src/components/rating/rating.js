@@ -3,17 +3,17 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Rating = () => {
-  const columns = ['User ID', 'Product ID', 'Rating','Review'];
+  const columns = ['User ID', 'Product ID', 'Rating', 'Review'];
   const operations = ['Create Rating', 'Read Rating', 'Update Rating', 'Delete Rating'];
   return (
     <Styles>
       <Container fluid>
         {operations.map((operation) => (
-          <div className="form-container">
+          <div className="form-container" key={operation}>
             <h3>{operation}</h3>
             <Form>
               {columns.map((field) => (
-                <Form.Group as={Row} className="mb-3">
+                <Form.Group as={Row} className="mb-3" key={field}>
                   <Form.Label column sm={2}>
                     {field}
                   </Form.Label>
