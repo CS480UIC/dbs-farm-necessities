@@ -4,6 +4,7 @@ import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { logout } from '../../actions/auth-actions';
 import { initializeDatabase } from '../../actions/initialize-database-actions';
 
 const Navigation = () => {
@@ -28,6 +29,21 @@ const Navigation = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   });
+
+  useEffect(() => {
+    const token = user?.token;
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) handleLogout();
+    }
+    setUser(JSON.parse(localStorage.getItem('profile')));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  const handleLogout = () => {
+    dispatch(logout(history));
+    setUser(null);
+  };
 
   const handleInitializeDatabase = () => {
     dispatch(initializeDatabase());
@@ -77,6 +93,16 @@ const Navigation = () => {
                 Rating
               </NavDropdown.Item>
             </NavDropdown>
+            
+            {user?.result ? (
+              <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
+                <Button onClick={handleLogout}>Logout</Button>
+              </Nav.Link>
+            ) : (
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/auth">
+                Log In
+              </Nav.Link>
+            )}
             <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
               <Button onClick={handleInitializeDatabase}>Initialize Database</Button>
             </Nav.Link>
