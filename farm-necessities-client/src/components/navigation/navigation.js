@@ -1,12 +1,19 @@
+import decode from 'jwt-decode';
 import React, { useEffect, useState } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { initializeDatabase } from '../../actions/initialize-database-actions';
 
 const Navigation = () => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const [showNavbar, setShowNavbar] = useState(true);
   const [scrollPos, setScrollPos] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useNavigate();
 
   const handleScroll = () => {
     setScrollPos(document.body.getBoundingClientRect().top);
@@ -22,6 +29,10 @@ const Navigation = () => {
     };
   });
 
+  const handleInitializeDatabase = () => {
+    dispatch(initializeDatabase());
+  };
+
   return (
     <Styles>
       <Navbar
@@ -36,33 +47,38 @@ const Navigation = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-collapse" onClick={() => setExpanded(expanded ? false : 'expanded')} />
         <Navbar.Collapse>
-          <Nav className="mx-auto">
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/cart">
-              Cart
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/product">
-              Product
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/product-category">
-              Product-Category
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/category">
-              Category
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/rating">
-              Rating
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/payment-detail">
-              Payment Detail
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/order-detail">
-              Order Detail
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/address">
-              Address
-            </Nav.Link>
-            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/order-history">
-              Order History
+          <Nav className="ml-auto">
+            <NavDropdown title="Entities">
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/address">
+                Address
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/cart">
+                Cart
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category">
+                Category
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/order-detail">
+                Order Detail
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/order-history">
+                Order History
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/payment-detail">
+                Payment Detail
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/product">
+                Product
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/product-category">
+                Product-Category
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/rating">
+                Rating
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
+              <Button onClick={handleInitializeDatabase}>Initialize Database</Button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -75,13 +91,23 @@ const Styles = styled.div`
   nav {
     padding: 0.6rem 1.25rem;
     font-family: var(--font-mono);
-    font-size: var(--fz-md);
+    font-size: var(--fz-sm);
     background-color: var(--light-gray);
     box-shadow: 0 10px 30px -10px var(--navy-shadow);
     gap: 10px;
     backdrop-filter: blur(10px);
     filter: none;
     transition: var(--transition);
+  }
+
+  button,
+  .dropdown-item {
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+  }
+
+  .dropdown-item {
+    margin: 0px;
   }
 
   .nav-active {
