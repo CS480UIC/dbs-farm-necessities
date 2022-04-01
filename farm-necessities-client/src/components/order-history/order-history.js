@@ -3,17 +3,17 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const OrderHistory = () => {
-  const columns = ['Order ID','User ID', 'Payment ID', 'Address ID','Delivery Date'];
+  const columns = ['Order ID', 'User ID', 'Payment ID', 'Address ID', 'Delivery Date'];
   const operations = ['Create Order History', 'Read Order History', 'Update Order History', 'Delete Order History'];
   return (
     <Styles>
       <Container fluid>
         {operations.map((operation) => (
-          <div className="form-container">
+          <div className="form-container" key={operation}>
             <h3>{operation}</h3>
             <Form>
               {columns.map((field) => (
-                <Form.Group as={Row} className="mb-3">
+                <Form.Group as={Row} className="mb-3" key={field}>
                   <Form.Label column sm={2}>
                     {field}
                   </Form.Label>
