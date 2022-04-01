@@ -9,4 +9,6 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+export const login = (formData) => API.post('/auth/login', formData);
+export const signup = (formData) => API.post('/auth/signup', formData);
 export const initializeDatabase = () => API.get('/initialize-database');

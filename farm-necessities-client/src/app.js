@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import './app.css';
 import Address from './components/address/address';
+import Auth from './components/auth/auth';
 import Cart from './components/cart/cart';
 import Category from './components/category/category';
 import Home from './components/home/home';
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/order-detail" exact element={<OrderDetail />} />
           <Route path="/address" exact element={<Address />} />
           <Route path="/order-history" exact element={<OrderHistory />} />
+          <Route path="/auth" exact element={<Auth />} />
         </Routes>
       </Container>
     </BrowserRouter>
