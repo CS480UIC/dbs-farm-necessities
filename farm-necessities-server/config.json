@@ -1,0 +1,8 @@
+{
+  "databaseHost": "localhost",
+  "databasePort": 3306,
+  "databaseName": "farm_necessities",
+  "databaseAdmin": "farm_necessities",
+  "databasePassword": "30303030a",
+  "tokenSecret": "farm_necessities"
+}
