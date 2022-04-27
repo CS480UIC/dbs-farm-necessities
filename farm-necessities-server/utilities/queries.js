@@ -4,9 +4,7 @@ export const selectUser = {
   getIDs: 'SELECT DISTINCT user_id FROM user',
 };
 
-
-export const insertUser =
-  'INSERT INTO user (name, password, email, phone_number, account_type) VALUES (?, ?, ?, ?, ?);';
+export const insertUser = 'INSERT INTO user (name, password, email, phone_number, account_type) VALUES (?, ?, ?, ?, ?);';
 export const selectAddress = {
   all: 'SELECT * FROM address;',
   byID: 'SELECT * FROM address WHERE address_id = ?;',
@@ -23,13 +21,11 @@ export const updateProduct = 'UPDATE product SET user_id= ?, name = ?, descripti
 export const deleteProduct = 'DELETE FROM product WHERE product_id = ?';
 
 export const selectCategory = {
-  all: "SELECT * FROM category;",
+  all: 'SELECT * FROM category;',
 };
-export const insertCategory =
-  "INSERT INTO category (name,status) VALUES(?, ?);";
-export const updateCategory =
-  "UPDATE category SET name= ?,status= ? WHERE category_id = ?;";
-export const deleteCategory = "DELETE FROM category WHERE category_id = ?";
+export const insertCategory = 'INSERT INTO category (name,status) VALUES(?, ?);';
+export const updateCategory = 'UPDATE category SET name= ?,status= ? WHERE category_id = ?;';
+export const deleteCategory = 'DELETE FROM category WHERE category_id = ?';
 export const queries = {
   view1: 'SELECT * FROM view_1;',
   view2: 'SELECT * FROM view_2;',
@@ -52,3 +48,8 @@ export const selectCart = 'SELECT * FROM cart;';
 export const insertCart = 'INSERT INTO cart (user_id,product_id,quantity) VALUES(?, ?, ?);';
 export const updateCart = 'UPDATE cart SET user_id= ?,product_id= ?, quantity = ? WHERE cart_id = ?;';
 export const deleteCart = 'DELETE FROM cart WHERE cart_id = ?;';
+
+export const selectOrderDetail = 'SELECT order_detail_id, order_id, product_id, quantity FROM order_detail;';
+export const insertOrderDetail = 'INSERT INTO order_detail (order_id, product_id, quantity) VALUES(?, ?, ?);';
+export const updateOrderDetail = 'UPDATE order_detail SET order_id= ?, product_id= ?, quantity = ? WHERE order_detail_id = ?;';
+export const deleteOrderDetail = 'DELETE FROM order_detail WHERE order_detail_id = ?;';
