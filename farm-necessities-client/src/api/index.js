@@ -35,3 +35,8 @@ export const createCategory = (data) => API.post('/category', data);
 export const retrieveCategories = () => API.get('/category');
 export const updateCategory = (data) => API.put('/category', data);
 export const deleteCategory = (data) => API.delete('/category', { data: data });
+
+export const createRating = (data) => API.post('/rating', data);
+export const retrieveRatings = () => API.get('/rating');
+export const updateRating = (data) => API.put('/rating', data);
+export const deleteRating = (data) => API.delete('/rating', { data: data });
