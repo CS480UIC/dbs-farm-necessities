@@ -32,7 +32,7 @@ CREATE TABLE `address` (
   KEY `user_id` (`user_id`),
   KEY `user_address` (`user_id`,`address_id`),
   CONSTRAINT `address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,13 +82,13 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `category_id` int NOT NULL,
+  `category_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `status` enum('active','inactive') NOT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `category_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,7 +296,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +305,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('Vedant','123123','v@v.com',1,'7784461212','buyer'),('aakash jain','3030','s@s',2,'998','buyer'),('mayur ','3030','v@t',3,'992','buyer'),('harsh','1212','h@h',4,'9982','seller'),('John','121','f@j',5,'123123','seller'),('Mehul','mehul12','mehul@mehul',6,'667788334','seller');
+INSERT INTO `user` VALUES ('Vedant','123123','v@v.com',1,'7784461212','buyer'),('aakash jain','3030','s@s',2,'998','buyer'),('mayur ','3030','v@t',3,'992','buyer'),('harsh','1212','h@h',4,'9982','seller'),('John','121','f@j',5,'123123','seller'),('Mehul','mehul12','mehul@mehul',6,'667788334','seller'),('Mayur','$2a$12$5FAOymCJMXIRwn1g4uE21OJkc3vnYyXhsk.RHKnLI0rNX4fpXFp6m','mmule2@uic.edu',8,'1234543211','buyer');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,6 +325,136 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary view structure for view `view_10`
+--
+
+DROP TABLE IF EXISTS `view_10`;
+/*!50001 DROP VIEW IF EXISTS `view_10`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_10` AS SELECT 
+ 1 AS `user_id`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_2`
+--
+
+DROP TABLE IF EXISTS `view_2`;
+/*!50001 DROP VIEW IF EXISTS `view_2`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_2` AS SELECT 
+ 1 AS `user_id`,
+ 1 AS `product_id`,
+ 1 AS `rating`,
+ 1 AS `review`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_3`
+--
+
+DROP TABLE IF EXISTS `view_3`;
+/*!50001 DROP VIEW IF EXISTS `view_3`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_3` AS SELECT 
+ 1 AS `user_id`,
+ 1 AS `product_id`,
+ 1 AS `quantity`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_4`
+--
+
+DROP TABLE IF EXISTS `view_4`;
+/*!50001 DROP VIEW IF EXISTS `view_4`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_4` AS SELECT 
+ 1 AS `concat(name,' ',description)`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_5`
+--
+
+DROP TABLE IF EXISTS `view_5`;
+/*!50001 DROP VIEW IF EXISTS `view_5`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_5` AS SELECT 
+ 1 AS `user_id`,
+ 1 AS `number_of_orders`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_6`
+--
+
+DROP TABLE IF EXISTS `view_6`;
+/*!50001 DROP VIEW IF EXISTS `view_6`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_6` AS SELECT 
+ 1 AS `order_id`,
+ 1 AS `day(delivery_date)`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_7`
+--
+
+DROP TABLE IF EXISTS `view_7`;
+/*!50001 DROP VIEW IF EXISTS `view_7`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_7` AS SELECT 
+ 1 AS `user_id`,
+ 1 AS `card_number`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_8`
+--
+
+DROP TABLE IF EXISTS `view_8`;
+/*!50001 DROP VIEW IF EXISTS `view_8`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_8` AS SELECT 
+ 1 AS `product_name`,
+ 1 AS `category_name`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_9`
+--
+
+DROP TABLE IF EXISTS `view_9`;
+/*!50001 DROP VIEW IF EXISTS `view_9`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `view_9` AS SELECT 
+ 1 AS `name`,
+ 1 AS `password`,
+ 1 AS `email`,
+ 1 AS `user_id`,
+ 1 AS `phone_number`,
+ 1 AS `account_type`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping events for database 'farm_necessities'
+--
+
+--
+-- Dumping routines for database 'farm_necessities'
+--
+
+--
 -- Final view structure for view `view_1`
 --
 
@@ -341,6 +471,168 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_10`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_10`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_10` AS select distinct `order_history`.`user_id` AS `user_id` from `order_history` where exists(select 1 from `payment_detail` where (`payment_detail`.`payment_id` = `order_history`.`payment_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_2`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_2`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_2` AS select `rating`.`user_id` AS `user_id`,`rating`.`product_id` AS `product_id`,`rating`.`rating` AS `rating`,`rating`.`review` AS `review` from `rating` where (`rating`.`rating` > (select avg(`rating`.`rating`) from `rating`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_3`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_3`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_3` AS select `cart`.`user_id` AS `user_id`,`cart`.`product_id` AS `product_id`,`cart`.`quantity` AS `quantity` from `cart` where (`cart`.`user_id` in (3,2)) order by `cart`.`quantity` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_4`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_4`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_4` AS select concat(`product`.`name`,' ',`product`.`description`) AS `concat(name,' ',description)` from `product` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_5`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_5`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_5` AS select `order_history`.`user_id` AS `user_id`,count(0) AS `number_of_orders` from `order_history` group by `order_history`.`user_id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_6`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_6`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_6` AS select `order_history`.`order_id` AS `order_id`,dayofmonth(`order_history`.`delivery_date`) AS `day(delivery_date)` from `order_history` where (month(`order_history`.`delivery_date`) > 5) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_7`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_7`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_7` AS select `payment_detail`.`user_id` AS `user_id`,`payment_detail`.`card_number` AS `card_number` from `payment_detail` where (`payment_detail`.`payment_id` in (1,3,5)) order by `payment_detail`.`card_number` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_8`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_8`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_8` AS select `b`.`name` AS `product_name`,`c`.`name` AS `category_name` from ((`product_category` `a` join `product` `b` on((`a`.`product_id` = `b`.`product_id`))) join `category` `c` on((`a`.`category_id` = `c`.`category_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_9`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_9`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`farm_necessities`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_9` AS select `user`.`name` AS `name`,`user`.`password` AS `password`,`user`.`email` AS `email`,`user`.`user_id` AS `user_id`,`user`.`phone_number` AS `phone_number`,`user`.`account_type` AS `account_type` from `user` where `user`.`user_id` in (select `product`.`user_id` from `product`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -351,4 +643,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-31 14:43:34
+-- Dump completed on 2022-04-27  0:25:31
