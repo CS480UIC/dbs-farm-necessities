@@ -124,3 +124,39 @@ export const deleteProduct = async (deletedData) => {
     errorHandler(error);
   }
 };
+
+export const createCategory = async (newData) => {
+  try {
+    const { data } = await api.createCategory(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveCategories = async () => {
+  try {
+    const { data } = await api.retrieveCategories();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateCategory = async (updatedData) => {
+  try {
+    const { data } = await api.updateCategory(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteCategory = async (deletedData) => {
+  try {
+    const { data } = await api.deleteCategory(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
