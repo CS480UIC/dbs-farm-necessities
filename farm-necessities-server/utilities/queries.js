@@ -15,3 +15,4 @@ export const selectAddress={
 export const insertAddress = 'INSERT INTO address (user_id,address) VALUES(?, ?);';
 export const updateAddress = 'UPDATE address SET user_id= ?,address= ? WHERE address_id = ?;';
 export const deleteAddress = 'DELETE FROM address WHERE address_id = ?';
+export const view1='SELECT * FROM view_1;'
