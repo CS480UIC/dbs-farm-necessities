@@ -1,34 +1,28 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { createAddress, deleteAddress, retrieveAddresses, updateAddress } from '../../actions/address-actions';
-import { fetchUsers } from '../../api/index';
+import { createAddress, deleteAddress, retrieveAddresses, retrieveUsers, updateAddress } from '../../api/api-helpers';
 import ButtonGroup from '../reusable-components/button-group';
 
 const Address = () => {
-  const initialCurrentAddress = {
+  const initialState = {
     address_id: '',
     user_id: '',
     address: '',
   };
+  const [addresses, setAddresses] = useState([]);
   const [userIds, setUserIds] = useState([]);
   const [activeForm, setActiveForm] = useState('new');
-  const [currentAddress, setCurrentAddress] = useState(initialCurrentAddress);
-  const addresses = useSelector((state) => state.addresses);
-  const dispatch = useDispatch();
+  const [currentAddress, setCurrentAddress] = useState(initialState);
 
-  useEffect(() => {
-    dispatch(retrieveAddresses());
-  }, [dispatch]);
+  useEffect(async () => {
+    const users = await retrieveUsers();
+    users && setUserIds(users.map((user) => user.user_id));
 
-  useEffect(() => {
-    const fetchUserIds = async () => {
-      const { data } = await fetchUsers();
-      setUserIds(data.map((user) => user.user_id));
-    };
-    fetchUserIds();
+    const allAddresses = await retrieveAddresses();
+    allAddresses && setAddresses(allAddresses);
   }, []);
 
   const onRowClick = (e, address) => {
@@ -36,24 +30,26 @@ const Address = () => {
     setCurrentAddress(address);
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     return setCurrentAddress({ ...currentAddress, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (e.nativeEvent.submitter.title === 'update') {
-      dispatch(updateAddress(currentAddress));
-      setCurrentAddress(initialCurrentAddress);
+      const updatedAddress = await updateAddress(currentAddress);
+      updatedAddress.affectedRows === 1 &&
+        setAddresses(addresses.map((address) => (address.address_id === currentAddress.address_id ? currentAddress : address)));
     } else if (e.nativeEvent.submitter.title === 'delete') {
-      dispatch(deleteAddress(currentAddress));
-      setCurrentAddress(initialCurrentAddress);
+      const deletedAddress = await deleteAddress(currentAddress);
+      deletedAddress.affectedRows === 1 && setAddresses(addresses.filter((address) => address.address_id !== currentAddress.address_id));
     } else if (e.nativeEvent.submitter.title === 'create') {
-      dispatch(createAddress(currentAddress));
-      setCurrentAddress(initialCurrentAddress);
-    } else {
-      setCurrentAddress(initialCurrentAddress);
+      const newAddress = await createAddress(currentAddress);
+      newAddress.insertId && setAddresses([...addresses, { ...currentAddress, address_id: newAddress.insertId }]);
     }
+
+    setCurrentAddress(initialState);
     setActiveForm('new');
   };
 
@@ -63,6 +59,7 @@ const Address = () => {
       <Container className="p-5 cursor-pointer" fluid>
         <Row>
           <Col xs={12} lg={8}>
+            <h3>Address</h3>
             {addresses && addresses.length > 0 && (
               <BootstrapTable
                 hover
@@ -74,6 +71,7 @@ const Address = () => {
             )}
           </Col>
           <Col xs={12} lg={4}>
+            <h3>{activeForm === 'new' ? 'New' : 'Edit'}</h3>
             <Form onSubmit={handleSubmit}>
               {activeForm === 'edit' && (
                 <Form.Group className="mb-3">
@@ -108,19 +106,7 @@ const Address = () => {
 
 const Styles = styled.div`
   .container-fluid {
-    padding: 1rem;
     margin-top: var(--nav-height);
-  }
-
-  h3 {
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  .form-container {
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
   }
 `;
 
