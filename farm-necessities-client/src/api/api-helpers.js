@@ -11,7 +11,6 @@ const errorHandler = (error) => {
 export const retrieveViewQuery = async (view) => {
   try {
     const { data } = await api.retrieveViewQuery(view);
-    console.log('data', data);
     return data;
   } catch (error) {
     errorHandler(error);

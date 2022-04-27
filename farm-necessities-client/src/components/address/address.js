@@ -76,7 +76,7 @@ const Address = () => {
               {activeForm === 'edit' && (
                 <Form.Group className="mb-3">
                   <Form.Label>Address Id</Form.Label>
-                  <Form.Control required value={address_id} type="text" name="address_id" onChange={handleChange} />
+                  <Form.Control required disabled value={address_id} type="text" name="address_id" />
                 </Form.Group>
               )}
               <Form.Group className="mb-3">

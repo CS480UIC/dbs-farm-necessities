@@ -16,7 +16,6 @@ const Product = () => {
   };
   const [products, setProducts] = useState([]);
   const [userIds, setUserIds] = useState([]);
-  const [productIds, setProductIds] = useState([]);
   const [activeForm, setActiveForm] = useState('new');
   const [currentProduct, setCurrentProduct] = useState(initialState);
   const { product_id, user_id, name, description, price } = currentProduct;
@@ -26,7 +25,6 @@ const Product = () => {
     users && Array.isArray(users) && setUserIds(users.map((user) => user.user_id));
 
     const allProducts = await retrieveProducts();
-    allProducts && Array.isArray(allProducts) && setProductIds(allProducts.map((product) => product.product_id));
     allProducts && Array.isArray(allProducts) && setProducts(allProducts);
   }, []);
 
@@ -56,8 +54,6 @@ const Product = () => {
     setActiveForm('new');
   };
 
-  console.log('products', products);
-
   return (
     <Styles>
       <Container className="p-5 cursor-pointer" fluid>
@@ -67,7 +63,7 @@ const Product = () => {
             {products && products.length > 0 && (
               <BootstrapTable
                 hover
-                keyField="user_id"
+                keyField="product_id"
                 data={products}
                 columns={Object.keys(products[0]).map((key) => ({ dataField: key, text: key }))}
                 rowEvents={{ onClick: onRowClick }}
@@ -80,15 +76,7 @@ const Product = () => {
               {activeForm === 'edit' && (
                 <Form.Group className="mb-3">
                   <Form.Label>Product Id</Form.Label>
-                  <Form.Control as={'select'} required value={product_id} type="text" name="product_id" onChange={handleChange}>
-                    <option value=""></option>
-                    {productIds &&
-                      productIds.map((productId) => (
-                        <option key={productId} value={productId}>
-                          {productId}
-                        </option>
-                      ))}
-                  </Form.Control>
+                  <Form.Control required disabled value={product_id} type="text" name="product_id" />
                 </Form.Group>
               )}
               <Form.Group className="mb-3">
@@ -113,7 +101,7 @@ const Product = () => {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Price</Form.Label>
-                <Form.Control required value={price} type="text" name="price" onChange={handleChange} />
+                <Form.Control required value={price} type="number" name="price" onChange={handleChange} onWheel={(e) => e.target.blur()} />
               </Form.Group>
               <ButtonGroup activeForm={activeForm} />
             </Form>
