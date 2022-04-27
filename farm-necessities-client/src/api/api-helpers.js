@@ -8,6 +8,16 @@ const errorHandler = (error) => {
   console.log('error', error);
 };
 
+export const retrieveViewQuery = async (view) => {
+  try {
+    const { data } = await api.retrieveViewQuery(view);
+    console.log('data', data);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
 export const retrieveUsers = async () => {
   try {
     const { data } = await api.fetchUsers();

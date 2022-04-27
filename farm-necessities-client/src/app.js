@@ -14,6 +14,7 @@ import OrderHistory from './components/order-history/order-history';
 import PaymentDetail from './components/payment-detail/payment-detail';
 import ProductCategory from './components/product-category/product-category';
 import Product from './components/product/product';
+import Queries from './components/queries/queries';
 import Rating from './components/rating/rating';
 import Users from './components/users/users';
 import Fonts from './styles/fonts';
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/order-history" exact element={<OrderHistory />} />
           <Route path="/users" exact element={<Users />} />
           <Route path="/auth" exact element={<Auth />} />
+          <Route path="/queries" exact element={<Queries />} />
         </Routes>
       </Container>
     </BrowserRouter>
