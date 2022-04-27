@@ -1,22 +1,24 @@
-import cors from 'cors';
-import express from 'express';
-import initializeDatabaseRoutes from './routes/initialize-database.js';
-import authRoutes from './routes/authenticate.js';
-import usersRoutes from './routes/users.js';
-import addressRoutes from './routes/address.js';
+import cors from "cors";
+import express from "express";
+import initializeDatabaseRoutes from "./routes/initialize-database.js";
+import authRoutes from "./routes/authenticate.js";
+import usersRoutes from "./routes/users.js";
+import addressRoutes from "./routes/address.js";
+import categoryRoutes from "./routes/category.js";
 const app = express();
 
-app.use(express.json({ limit: '30mb', extended: true }));
-app.use(express.urlencoded({ limit: '30mb', extended: true }));
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.use('/api/initialize-database', initializeDatabaseRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/user', usersRoutes);
-app.use('/api/address', addressRoutes);
+app.use("/api/initialize-database", initializeDatabaseRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/user", usersRoutes);
+app.use("/api/address", addressRoutes);
+app.use("/api/category", categoryRoutes);
 
-app.use('/', (req, res) => {
-  res.send('Farm Necessities API is up and running!');
+app.use("/", (req, res) => {
+  res.send("Farm Necessities API is up and running!");
 });
 
 const PORT = process.env.PORT || 5000;
