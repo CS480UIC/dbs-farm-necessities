@@ -35,3 +35,14 @@ export const createCategory = (data) => API.post('/category', data);
 export const retrieveCategories = () => API.get('/category');
 export const updateCategory = (data) => API.put('/category', data);
 export const deleteCategory = (data) => API.delete('/category', { data: data });
+
+export const createRating = (data) => API.post('/rating', data);
+export const retrieveRatings = () => API.get('/rating');
+export const updateRating = (data) => API.put('/rating', data);
+export const deleteRating = (data) => API.delete('/rating', { data: data });
+
+
+export const createProductCategory = (data) => API.post('/product-category', data);
+export const retrieveProductCategories = () => API.get('/product-category');
+export const updateProductCategory = (data) => API.put('/product-category', data);
+export const deleteProductCategory = (data) => API.delete('/product-category', { data: data });
