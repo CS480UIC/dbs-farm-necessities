@@ -56,12 +56,14 @@ CREATE TABLE `cart` (
   `user_id` int NOT NULL,
   `product_id` int NOT NULL,
   `quantity` int NOT NULL,
+  `cart_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`cart_id`),
   KEY `product_id` (`product_id`),
   KEY `user_id` (`user_id`),
   KEY `user_cart` (`user_id`,`product_id`),
   CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +72,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1,2,1),(2,3,2),(3,4,23),(4,5,4),(5,1,2);
+INSERT INTO `cart` VALUES (1,2,1,1),(2,3,2,2),(3,4,23,3),(4,5,4,4),(5,1,2,5);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,12 +114,14 @@ CREATE TABLE `order_detail` (
   `order_id` int NOT NULL,
   `product_id` int NOT NULL,
   `quantity` int NOT NULL,
+  `order_detail_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`order_detail_id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`),
   KEY `order_product` (`order_id`,`product_id`),
   CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_history` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +130,7 @@ CREATE TABLE `order_detail` (
 
 LOCK TABLES `order_detail` WRITE;
 /*!40000 ALTER TABLE `order_detail` DISABLE KEYS */;
-INSERT INTO `order_detail` VALUES (1,1,2),(2,2,3),(3,3,4),(4,3,2),(4,4,5);
+INSERT INTO `order_detail` VALUES (1,1,2,1),(2,2,3,2),(3,3,4,3),(4,3,2,4),(4,4,5,5);
 /*!40000 ALTER TABLE `order_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,11 +236,13 @@ DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE `product_category` (
   `product_id` int NOT NULL,
   `category_id` int NOT NULL,
+  `product_category_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`product_category_id`),
   KEY `category_id` (`category_id`),
   KEY `prod_cat` (`product_id`,`category_id`),
   CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +251,7 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
+INSERT INTO `product_category` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5);
 /*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,12 +267,14 @@ CREATE TABLE `rating` (
   `product_id` int NOT NULL,
   `rating` int NOT NULL,
   `review` varchar(100) DEFAULT NULL,
+  `rating_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`rating_id`),
   KEY `product_id` (`product_id`),
   KEY `user_id` (`user_id`),
   KEY `prod_user` (`product_id`,`user_id`),
   CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,7 +283,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,1,8,'ok'),(2,2,9,'good'),(3,3,8,'ok'),(4,4,8,'good'),(5,5,9,'excellent');
+INSERT INTO `rating` VALUES (1,1,8,'ok',1),(2,2,9,'good',2),(3,3,8,'ok',3),(4,4,8,'good',4),(5,5,9,'excellent',5);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -643,4 +651,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-27  0:25:31
+-- Dump completed on 2022-04-27 13:45:24
