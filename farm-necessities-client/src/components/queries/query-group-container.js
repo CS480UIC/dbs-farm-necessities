@@ -13,7 +13,7 @@ const QueryGroupContainer = ({ query }) => {
 
   return (
     <>
-      <Row className="mb-5">
+      <Row>
         <Col xs={10}>
           <h5>{query.query}</h5>
         </Col>
@@ -23,15 +23,17 @@ const QueryGroupContainer = ({ query }) => {
           </Button>
         </Col>
       </Row>
-      <Row>
-        {queryResult && queryResult.length > 0 && (
-          <BootstrapTable
-            hover
-            keyField={query.key}
-            data={queryResult}
-            columns={Object.keys(queryResult[0]).map((key) => ({ dataField: key, text: key }))}
-          />
-        )}
+      <Row className="mt-2 mb-5">
+        <Col>
+          {queryResult && queryResult.length > 0 && (
+            <BootstrapTable
+              hover
+              keyField={query.key}
+              data={queryResult}
+              columns={Object.keys(queryResult[0]).map((key) => ({ dataField: key, text: key }))}
+            />
+          )}
+        </Col>
       </Row>
     </>
   );
