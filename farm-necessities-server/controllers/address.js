@@ -7,7 +7,7 @@ export const getAddress = async (req, res) => {
     const addresses = await queryDatabase(databasePool, selectAddress.all, placeholders);
     res.status(200).json(addresses);
   } catch (error) {
-    console.log('get-users-error', error);
+    console.log('address-error', error);
     res.status(500).json({ message: 'Something went wrong' });
   }
 };
@@ -19,7 +19,7 @@ export const addAddress = async (req, res) => {
     const addedAddress = await queryDatabase(databasePool, insertAddress, placeholders);
     res.status(200).json(addedAddress);
   } catch (error) {
-    console.log('get-users-error', error);
+    console.log('address-error', error);
     res.status(500).json({ message: 'Something went wrong' });
   }
 };
@@ -31,7 +31,7 @@ export const editAddress = async (req, res) => {
     const editedAddress = await queryDatabase(databasePool, updateAddress, placeholders);
     res.status(200).json(editedAddress);
   } catch (error) {
-    console.log('get-users-error', error);
+    console.log('address-error', error);
     res.status(500).json({ message: 'Something went wrong' });
   }
 };
@@ -43,7 +43,7 @@ export const removeAddress = async (req, res) => {
     const removedAddress = await queryDatabase(databasePool, deleteAddress, placeholders);
     res.status(200).json(removedAddress);
   } catch (error) {
-    console.log('get-users-error', error);
+    console.log('address-error', error);
     res.status(500).json({ message: 'Something went wrong' });
   }
 };
