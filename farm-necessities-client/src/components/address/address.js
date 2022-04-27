@@ -16,13 +16,14 @@ const Address = () => {
   const [userIds, setUserIds] = useState([]);
   const [activeForm, setActiveForm] = useState('new');
   const [currentAddress, setCurrentAddress] = useState(initialState);
+  const { address_id, user_id, address } = currentAddress;
 
   useEffect(async () => {
     const users = await retrieveUsers();
-    users && setUserIds(users.map((user) => user.user_id));
+    users && Array.isArray(users) && setUserIds(users.map((user) => user.user_id));
 
     const allAddresses = await retrieveAddresses();
-    allAddresses && setAddresses(allAddresses);
+    allAddresses && Array.isArray(allAddresses) && setAddresses(allAddresses);
   }, []);
 
   const onRowClick = (e, address) => {
@@ -40,10 +41,10 @@ const Address = () => {
     if (e.nativeEvent.submitter.title === 'update') {
       const updatedAddress = await updateAddress(currentAddress);
       updatedAddress.affectedRows === 1 &&
-        setAddresses(addresses.map((address) => (address.address_id === currentAddress.address_id ? currentAddress : address)));
+        setAddresses(addresses.map((address) => (address.address_id === address_id ? currentAddress : address)));
     } else if (e.nativeEvent.submitter.title === 'delete') {
       const deletedAddress = await deleteAddress(currentAddress);
-      deletedAddress.affectedRows === 1 && setAddresses(addresses.filter((address) => address.address_id !== currentAddress.address_id));
+      deletedAddress.affectedRows === 1 && setAddresses(addresses.filter((address) => address.address_id !== address_id));
     } else if (e.nativeEvent.submitter.title === 'create') {
       const newAddress = await createAddress(currentAddress);
       newAddress.insertId && setAddresses([...addresses, { ...currentAddress, address_id: newAddress.insertId }]);
@@ -53,7 +54,6 @@ const Address = () => {
     setActiveForm('new');
   };
 
-  const { address_id, user_id, address } = currentAddress;
   return (
     <Styles>
       <Container className="p-5 cursor-pointer" fluid>

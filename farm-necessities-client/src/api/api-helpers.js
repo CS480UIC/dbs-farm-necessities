@@ -17,9 +17,9 @@ export const retrieveUsers = async () => {
   }
 };
 
-export const createAddress = async (newAddress) => {
+export const createAddress = async (newData) => {
   try {
-    const { data } = await api.createAddress(newAddress);
+    const { data } = await api.createAddress(newData);
     return data;
   } catch (error) {
     errorHandler(error);
@@ -35,18 +35,90 @@ export const retrieveAddresses = async () => {
   }
 };
 
-export const updateAddress = async (updatedAddress) => {
+export const updateAddress = async (updatedData) => {
   try {
-    const { data } = await api.updateAddress(updatedAddress);
+    const { data } = await api.updateAddress(updatedData);
     return data;
   } catch (error) {
     errorHandler(error);
   }
 };
 
-export const deleteAddress = async (deletedAddress) => {
+export const deleteAddress = async (deletedData) => {
   try {
-    const { data } = await api.deleteAddress(deletedAddress);
+    const { data } = await api.deleteAddress(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const createCart = async (newData) => {
+  try {
+    const { data } = await api.createCart(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveCarts = async () => {
+  try {
+    const { data } = await api.retrieveCarts();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateCart = async (updatedData) => {
+  try {
+    const { data } = await api.updateCart(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteCart = async (deletedData) => {
+  try {
+    const { data } = await api.deleteCart(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const createProduct = async (newData) => {
+  try {
+    const { data } = await api.createProduct(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveProducts = async () => {
+  try {
+    const { data } = await api.retrieveProducts();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateProduct = async (updatedData) => {
+  try {
+    const { data } = await api.updateProduct(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteProduct = async (deletedData) => {
+  try {
+    const { data } = await api.deleteProduct(deletedData);
     return data;
   } catch (error) {
     errorHandler(error);
