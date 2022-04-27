@@ -160,3 +160,39 @@ export const deleteCategory = async (deletedData) => {
     errorHandler(error);
   }
 };
+
+export const createPaymentDetail = async (newData) => {
+  try {
+    const { data } = await api.createPaymentDetail(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrievePaymentDetails = async () => {
+  try {
+    const { data } = await api.retrievePaymentDetails();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updatePaymentDetail = async (updatedData) => {
+  try {
+    const { data } = await api.updatePaymentDetail(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deletePaymentDetail = async (deletedData) => {
+  try {
+    const { data } = await api.deletePaymentDetail(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};

@@ -18,16 +18,12 @@ const Category = () => {
     status: '',
   };
   const [categories, setCategories] = useState([]);
-  const [categoryIds, setCategoryIds] = useState([]);
   const [activeForm, setActiveForm] = useState('new');
   const [currentCategory, setCurrentCategory] = useState(initialState);
   const { category_id, name, status } = currentCategory;
 
   useEffect(async () => {
     const allCategories = await retrieveCategories();
-    allCategories &&
-      Array.isArray(allCategories) &&
-      setCategoryIds(allCategories.map((category) => category.category_id));
     allCategories &&
       Array.isArray(allCategories) &&
       setCategories(allCategories);
@@ -101,21 +97,13 @@ const Category = () => {
                 <Form.Group className="mb-3">
                   <Form.Label>Category Id</Form.Label>
                   <Form.Control
-                    as={'select'}
                     required
+                    disabled
                     value={category_id}
                     type="text"
                     name="category_id"
                     onChange={handleChange}
-                  >
-                    <option value=""></option>
-                    {categoryIds &&
-                      categoryIds.map((categoryId) => (
-                        <option key={categoryId} value={categoryId}>
-                          {categoryId}
-                        </option>
-                      ))}
-                  </Form.Control>
+                  ></Form.Control>
                 </Form.Group>
               )}
               <Form.Group className="mb-3">
