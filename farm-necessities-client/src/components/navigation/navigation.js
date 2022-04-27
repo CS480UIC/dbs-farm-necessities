@@ -109,6 +109,9 @@ const Navigation = () => {
                 </NavDropdown.Item>
               ))}
             </NavDropdown>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/queries">
+              Queries
+            </Nav.Link>
             <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/users">
               Users
             </Nav.Link>
