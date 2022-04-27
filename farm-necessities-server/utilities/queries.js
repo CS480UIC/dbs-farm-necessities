@@ -47,3 +47,8 @@ export const selectProductCategory = 'SELECT * FROM product_category;';
 export const insertProductCategory = 'INSERT INTO product_category (product_id,category_id) VALUES(?, ?);';
 export const updateProductCategory = 'UPDATE product_category SET product_id= ?, category_id = ? WHERE product_category_id = ?;';
 export const deleteProductCategory = 'DELETE FROM product_category WHERE product_category_id = ?;';
+
+export const selectCart = 'SELECT * FROM cart;';
+export const insertCart = 'INSERT INTO cart (user_id,product_id,quantity) VALUES(?, ?, ?);';
+export const updateCart = 'UPDATE cart SET user_id= ?,product_id= ?, quantity = ? WHERE cart_id = ?;';
+export const deleteCart = 'DELETE FROM cart WHERE cart_id = ?;';
