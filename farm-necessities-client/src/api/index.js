@@ -4,7 +4,9 @@ const API = axios.create({ baseURL: 'http://localhost:5000/api' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
-    req.headers.authorization = `${JSON.parse(localStorage.getItem('profile')).token}`;
+    req.headers.authorization = `${
+      JSON.parse(localStorage.getItem('profile')).token
+    }`;
   }
   return req;
 });
@@ -28,3 +30,8 @@ export const createProduct = (data) => API.post('/product', data);
 export const retrieveProducts = () => API.get('/product');
 export const updateProduct = (data) => API.put('/product', data);
 export const deleteProduct = (data) => API.delete('/product', { data: data });
+
+export const createCategory = (data) => API.post('/category', data);
+export const retrieveCategories = () => API.get('/category');
+export const updateCategory = (data) => API.put('/category', data);
+export const deleteCategory = (data) => API.delete('/category', { data: data });
