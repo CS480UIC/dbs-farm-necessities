@@ -15,6 +15,44 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useNavigate();
+  const entitiesNavOptions = [
+    {
+      name: 'Address',
+      link: '/address',
+    },
+    {
+      name: 'Cart',
+      link: '/cart',
+    },
+    {
+      name: 'Category',
+      link: '/category',
+    },
+    {
+      name: 'Order Detail',
+      link: '/order-detail',
+    },
+    {
+      name: 'Order History',
+      link: '/order-history',
+    },
+    {
+      name: 'Payment Detail',
+      link: '/payment-detail',
+    },
+    {
+      name: 'Product',
+      link: '/product',
+    },
+    {
+      name: 'Product-Category',
+      link: '/product-category7',
+    },
+    {
+      name: 'Rating',
+      link: '/rating',
+    },
+  ];
 
   const handleScroll = () => {
     setScrollPos(document.body.getBoundingClientRect().top);
@@ -65,33 +103,11 @@ const Navigation = () => {
         <Navbar.Collapse>
           <Nav className="ml-auto">
             <NavDropdown title="Entities">
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/address">
-                Address
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/cart">
-                Cart
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category">
-                Category
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/order-detail">
-                Order Detail
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/order-history">
-                Order History
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/payment-detail">
-                Payment Detail
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/product">
-                Product
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/product-category">
-                Product-Category
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/rating">
-                Rating
-              </NavDropdown.Item>
+              {entitiesNavOptions.map((nav) => (
+                <NavDropdown.Item key={nav.link} onClick={() => setExpanded(false)} as={Link} to={nav.link}>
+                  {nav.name}
+                </NavDropdown.Item>
+              ))}
             </NavDropdown>
             <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/users">
               Users
