@@ -39,11 +39,21 @@ export const deleteCategory = (data) => API.delete('/category', { data: data });
 export const createPaymentDetail = (data) => API.post('/payment-detail', data);
 export const retrievePaymentDetails = () => API.get('/payment-detail');
 export const updatePaymentDetail = (data) => API.put('/payment-detail', data);
-export const deletePaymentDetail = (data) =>
-  API.delete('/payment-detail', { data: data });
+export const deletePaymentDetail = (data) => API.delete('/payment-detail', { data: data });
 
 export const createOrderHistory = (data) => API.post('/order-history', data);
 export const retrieveOrderHistories = () => API.get('/order-history');
 export const updateOrderHistory = (data) => API.put('/order-history', data);
-export const deleteOrderHistory = (data) =>
-  API.delete('/order-history', { data: data });
+export const deleteOrderHistory = (data) => API.delete('/order-history', { data: data });
+
+export const createRating = (data) => API.post('/rating', data);
+export const retrieveRatings = () => API.get('/rating');
+export const updateRating = (data) => API.put('/rating', data);
+export const deleteRating = (data) => API.delete('/rating', { data: data });
+
+
+export const createProductCategory = (data) => API.post('/product-category', data);
+export const retrieveProductCategories = () => API.get('/product-category');
+export const updateProductCategory = (data) => API.put('/product-category', data);
+export const deleteProductCategory = (data) => API.delete('/product-category', { data: data });
+

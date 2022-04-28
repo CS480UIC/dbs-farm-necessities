@@ -164,7 +164,7 @@ export const deleteCategory = async (deletedData) => {
 export const createPaymentDetail = async (newData) => {
   try {
     const { data } = await api.createPaymentDetail(newData);
-    return data;
+        return data;
   } catch (error) {
     errorHandler(error);
   }
@@ -182,7 +182,7 @@ export const retrievePaymentDetails = async () => {
 export const updatePaymentDetail = async (updatedData) => {
   try {
     const { data } = await api.updatePaymentDetail(updatedData);
-    return data;
+     return data;
   } catch (error) {
     errorHandler(error);
   }
@@ -191,6 +191,44 @@ export const updatePaymentDetail = async (updatedData) => {
 export const deletePaymentDetail = async (deletedData) => {
   try {
     const { data } = await api.deletePaymentDetail(deletedData);
+     return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const createRating = async (newData) => {
+  try {
+    const { data } = await api.createRating(newData);
+        return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+
+export const retrieveRatings = async () => {
+  try {
+    const { data } = await api.retrieveRatings();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+
+export const updateRating = async (updatedData) => {
+  try {
+    const { data } = await api.updateRating(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteRating = async (deletedData) => {
+  try {
+    const { data } = await api.deleteRating(deletedData);
     return data;
   } catch (error) {
     errorHandler(error);
@@ -200,7 +238,7 @@ export const deletePaymentDetail = async (deletedData) => {
 export const createOrderHistory = async (newData) => {
   try {
     const { data } = await api.createOrderHistory(newData);
-    return data;
+     return data;
   } catch (error) {
     errorHandler(error);
   }
@@ -209,7 +247,7 @@ export const createOrderHistory = async (newData) => {
 export const retrieveOrderHistories = async () => {
   try {
     const { data } = await api.retrieveOrderHistories();
-    return data;
+     return data;
   } catch (error) {
     errorHandler(error);
   }
@@ -218,7 +256,7 @@ export const retrieveOrderHistories = async () => {
 export const updateOrderHistory = async (updatedData) => {
   try {
     const { data } = await api.updateOrderHistory(updatedData);
-    return data;
+     return data;
   } catch (error) {
     errorHandler(error);
   }
@@ -227,6 +265,42 @@ export const updateOrderHistory = async (updatedData) => {
 export const deleteOrderHistory = async (deletedData) => {
   try {
     const { data } = await api.deleteOrderHistory(deletedData);
+     return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const createProductCategory = async (newData) => {
+  try {
+    const { data } = await api.createProductCategory(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveProductCategories = async () => {
+  try {
+    const { data } = await api.retrieveProductCategories();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateProductCategory = async (updatedData) => {
+  try {
+    const { data } = await api.updateProductCategory(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteProductCategory = async (deletedData) => {
+  try {
+    const { data } = await api.deleteProductCategory(deletedData);
     return data;
   } catch (error) {
     errorHandler(error);
