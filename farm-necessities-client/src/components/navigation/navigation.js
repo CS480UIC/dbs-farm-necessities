@@ -46,7 +46,7 @@ const Navigation = () => {
     },
     {
       name: 'Product-Category',
-      link: '/product-category7',
+      link: '/product-category',
     },
     {
       name: 'Rating',
@@ -109,21 +109,24 @@ const Navigation = () => {
                 </NavDropdown.Item>
               ))}
             </NavDropdown>
+            <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/queries">
+              Queries
+            </Nav.Link>
             <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/users">
               Users
+            </Nav.Link>
+            <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
+              <Button onClick={handleInitializeDatabase}>Initialize Database</Button>
             </Nav.Link>
             {user?.result ? (
               <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
                 <Button onClick={handleLogout}>Logout</Button>
               </Nav.Link>
             ) : (
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/auth">
-                Log In
+              <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
+                <Button>Login</Button>
               </Nav.Link>
             )}
-            <Nav.Link className="pt-0" onClick={() => setExpanded(false)} as={Link} to="/auth">
-              <Button onClick={handleInitializeDatabase}>Initialize Database</Button>
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
