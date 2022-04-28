@@ -8,6 +8,15 @@ const errorHandler = (error) => {
   console.log('error', error);
 };
 
+export const retrieveViewQuery = async (view) => {
+  try {
+    const { data } = await api.retrieveViewQuery(view);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
 export const retrieveUsers = async () => {
   try {
     const { data } = await api.fetchUsers();
@@ -125,6 +134,7 @@ export const deleteProduct = async (deletedData) => {
   }
 };
 
+
 export const createCategory = async (newData) => {
   try {
     const { data } = await api.createCategory(newData);
@@ -206,7 +216,6 @@ export const createRating = async (newData) => {
   }
 };
 
-
 export const retrieveRatings = async () => {
   try {
     const { data } = await api.retrieveRatings();
@@ -215,7 +224,6 @@ export const retrieveRatings = async () => {
     errorHandler(error);
   }
 };
-
 
 export const updateRating = async (updatedData) => {
   try {
@@ -301,6 +309,42 @@ export const updateProductCategory = async (updatedData) => {
 export const deleteProductCategory = async (deletedData) => {
   try {
     const { data } = await api.deleteProductCategory(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const createOrderDetail = async (newData) => {
+  try {
+    const { data } = await api.createOrderDetail(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveOrderDetails = async () => {
+  try {
+    const { data } = await api.retrieveOrderDetails();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateOrderDetail = async (updatedData) => {
+  try {
+    const { data } = await api.updateOrderDetail(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteOrderDetail = async (deletedData) => {
+  try {
+    const { data } = await api.deleteOrderDetail(deletedData);
     return data;
   } catch (error) {
     errorHandler(error);
