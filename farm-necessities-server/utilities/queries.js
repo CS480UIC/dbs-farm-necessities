@@ -37,7 +37,7 @@ export const queries = {
   view10: 'SELECT * FROM view_10;',
 };
 
-export const selectProductCategory = 'SELECT * FROM product_category;';
+export const selectProductCategory = 'SELECT product_category_id,product_id,category_id FROM product_category;';
 export const insertProductCategory = 'INSERT INTO product_category (product_id,category_id) VALUES(?, ?);';
 export const updateProductCategory = 'UPDATE product_category SET product_id= ?, category_id = ? WHERE product_category_id = ?;';
 export const deleteProductCategory = 'DELETE FROM product_category WHERE product_category_id = ?;';
@@ -47,12 +47,12 @@ export const insertOrderDetail = 'INSERT INTO order_detail (order_id, product_id
 export const updateOrderDetail = 'UPDATE order_detail SET order_id= ?, product_id= ?, quantity = ? WHERE order_detail_id = ?;';
 export const deleteOrderDetail = 'DELETE FROM order_detail WHERE order_detail_id = ?;';
 
-export const selectCart = 'SELECT * FROM cart;';
+export const selectCart = 'SELECT cart_id,user_id,product_id,quantity FROM cart;';
 export const insertCart = 'INSERT INTO cart (user_id,product_id,quantity) VALUES(?, ?, ?);';
 export const updateCart = 'UPDATE cart SET user_id= ?,product_id= ?, quantity = ? WHERE cart_id = ?;';
 export const deleteCart = 'DELETE FROM cart WHERE cart_id = ?;';
 
-export const selectRating = 'SELECT * FROM rating;';
+export const selectRating = 'SELECT rating_id,user_id,product_id,rating,review FROM rating;';
 export const insertRating = 'INSERT INTO rating (user_id,product_id,rating,review) VALUES(?, ?, ?,?);';
 export const updateRating = 'UPDATE rating SET user_id= ?,product_id= ?, rating = ?,review= ? WHERE rating_id = ?;';
 export const deleteRating = 'DELETE FROM rating WHERE rating_id = ?;';
