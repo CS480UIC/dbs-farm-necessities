@@ -1,35 +1,143 @@
-import React from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Form, Row } from 'react-bootstrap';
+import BootstrapTable from 'react-bootstrap-table-next';
 import styled from 'styled-components';
+import {
+  createCategory,
+  deleteCategory,
+  retrieveCategories,
+  updateCategory,
+} from '../../api/api-helpers';
+import ButtonGroup from '../reusable-components/button-group';
 
 const Category = () => {
-  const columns = ['Category ID', 'Name', 'Status'];
-  const operations = ['Create Category', 'Read Category', 'Update Category', 'Delete Category'];
+  const initialState = {
+    category_id: '',
+    name: '',
+    status: '',
+  };
+  const [categories, setCategories] = useState([]);
+  const [activeForm, setActiveForm] = useState('new');
+  const [currentCategory, setCurrentCategory] = useState(initialState);
+  const { category_id, name, status } = currentCategory;
+
+  useEffect(async () => {
+    const allCategories = await retrieveCategories();
+    allCategories &&
+      Array.isArray(allCategories) &&
+      setCategories(allCategories);
+  }, []);
+
+  const onRowClick = (e, category) => {
+    setActiveForm('edit');
+    setCurrentCategory(category);
+  };
+
+  const handleChange = async (e) => {
+    return setCurrentCategory({
+      ...currentCategory,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (e.nativeEvent.submitter.title === 'update') {
+      const updatedCategory = await updateCategory(currentCategory);
+      updatedCategory.affectedRows === 1 &&
+        setCategories(
+          categories.map((category) =>
+            category.category_id === category_id ? currentCategory : category
+          )
+        );
+    } else if (e.nativeEvent.submitter.title === 'delete') {
+      const deletedCategory = await deleteCategory(currentCategory);
+      deletedCategory.affectedRows === 1 &&
+        setCategories(
+          categories.filter((category) => category.category_id !== category_id)
+        );
+    } else if (e.nativeEvent.submitter.title === 'create') {
+      const newCategory = await createCategory(currentCategory);
+      newCategory.insertId &&
+        setCategories([
+          ...categories,
+          { ...currentCategory, category_id: newCategory.insertId },
+        ]);
+    }
+    setCurrentCategory(initialState);
+    setActiveForm('new');
+  };
+
+  console.log('categories', categories);
+
   return (
     <Styles>
-      <Container fluid>
-        {operations.map((operation) => (
-          <div className="form-container" key={operation}>
-            <h3>{operation}</h3>
-            <Form>
-              {columns.map((field) => (
-                <Form.Group as={Row} className="mb-3" key={field}>
-                  <Form.Label column sm={2}>
-                    {field}
-                  </Form.Label>
-                  <Col sm={10}>
-                    <Form.Control type="text" />
-                  </Col>
+      <Container className="p-5 cursor-pointer" fluid>
+        <Row>
+          <Col xs={12} lg={8}>
+            <h3>Category</h3>
+            {categories && categories.length > 0 && (
+              <BootstrapTable
+                hover
+                keyField="category_id"
+                data={categories}
+                columns={Object.keys(categories[0]).map((key) => ({
+                  dataField: key,
+                  text: key,
+                }))}
+                rowEvents={{ onClick: onRowClick }}
+              />
+            )}
+          </Col>
+          <Col xs={12} lg={4}>
+            <h3>{activeForm === 'new' ? 'New' : 'Edit'}</h3>
+            <Form onSubmit={handleSubmit}>
+              {activeForm === 'edit' && (
+                <Form.Group className="mb-3">
+                  <Form.Label>Category Id</Form.Label>
+                  <Form.Control
+                    required
+                    disabled
+                    value={category_id}
+                    type="text"
+                    name="category_id"
+                    onChange={handleChange}
+                  ></Form.Control>
                 </Form.Group>
-              ))}
-              <Form.Group as={Row} className="mb-3">
-                <Col sm={{ span: 10, offset: 2 }}>
-                  <Button type="submit">{operation}</Button>
-                </Col>
+              )}
+              <Form.Group className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  required
+                  value={name}
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                />
               </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Status</Form.Label>
+                <Form.Control
+                  as={'select'}
+                  required
+                  value={status}
+                  type="text"
+                  name="status"
+                  onChange={handleChange}
+                >
+                  <option value=""></option>
+                  {['active', 'inactive'].map((status) => (
+                    <option key={status} value={status}>
+                      {status}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+              <ButtonGroup activeForm={activeForm} />
             </Form>
-          </div>
-        ))}
+          </Col>
+        </Row>
       </Container>
     </Styles>
   );
@@ -37,20 +145,7 @@ const Category = () => {
 
 const Styles = styled.div`
   .container-fluid {
-    padding: 1rem;
     margin-top: var(--nav-height);
-    max-width: 900px;
-  }
-
-  h3 {
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  .form-container {
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
   }
 `;
 
