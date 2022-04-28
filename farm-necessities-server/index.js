@@ -1,8 +1,18 @@
 import cors from 'cors';
 import express from 'express';
-import initializeDatabaseRoutes from './routes/initialize-database.js';
+import addressRoutes from './routes/address.js';
 import authRoutes from './routes/authenticate.js';
+import initializeDatabaseRoutes from './routes/initialize-database.js';
 import usersRoutes from './routes/users.js';
+import productRoutes from './routes/product.js';
+import categoryRoutes from './routes/category.js';
+import queryRoutes from './routes/queries.js';
+import productCategoryRoutes from './routes/product-category.js';
+import cartRoutes from './routes/cart.js';
+import orderDetailRoutes from './routes/order-detail.js';
+import ratingRoutes from './routes/rating.js';
+import paymentDetailRoutes from './routes/payment-detail.js';
+import orderHistoryRoutes from './routes/order-history.js'
 
 const app = express();
 
@@ -13,8 +23,19 @@ app.use(cors());
 app.use('/api/initialize-database', initializeDatabaseRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', usersRoutes);
+app.use('/api/address', addressRoutes);
+app.use('/api/product', productRoutes);
+app.use('/api/category', categoryRoutes);
+app.use('/api/queries', queryRoutes);
+app.use('/api/product-category', productCategoryRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/order-detail', orderDetailRoutes);
+app.use('/api/rating', ratingRoutes);
+app.use('/api/payment-detail', paymentDetailRoutes);
+app.use('/api/order-history',orderHistoryRoutes)
 
 app.use('/', (req, res) => {
+  console.log(req);
   res.send('Farm Necessities API is up and running!');
 });
 
