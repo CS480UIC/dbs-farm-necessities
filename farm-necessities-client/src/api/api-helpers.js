@@ -196,3 +196,39 @@ export const deletePaymentDetail = async (deletedData) => {
     errorHandler(error);
   }
 };
+
+export const createOrderHistory = async (newData) => {
+  try {
+    const { data } = await api.createOrderHistory(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveOrderHistories = async () => {
+  try {
+    const { data } = await api.retrieveOrderHistories();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateOrderHistory = async (updatedData) => {
+  try {
+    const { data } = await api.updateOrderHistory(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteOrderHistory = async (deletedData) => {
+  try {
+    const { data } = await api.deleteOrderHistory(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
