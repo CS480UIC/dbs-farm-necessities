@@ -15,11 +15,11 @@ const ButtonGroup = ({ activeForm }) => {
         </Button>
       )}
       {activeForm === 'edit' && (
-        <Button title="delete" type="submit">
+        <Button title="delete" type="submit" formNoValidate>
           Delete
         </Button>
       )}
-      <Button title="cancel" type="submit">
+      <Button title="cancel" type="submit" formNoValidate>
         Cancel
       </Button>
     </Form.Group>
