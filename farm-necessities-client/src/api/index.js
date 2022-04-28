@@ -31,3 +31,8 @@ export const createProduct = (data) => API.post('/product', data);
 export const retrieveProducts = () => API.get('/product');
 export const updateProduct = (data) => API.put('/product', data);
 export const deleteProduct = (data) => API.delete('/product', { data: data });
+
+export const createOrderDetail = (data) => API.post('/order-detail', data);
+export const retrieveOrderDetails = () => API.get('/order-detail');
+export const updateOrderDetail = (data) => API.put('/order-detail', data);
+export const deleteOrderDetail = (data) => API.delete('/order-detail', { data: data });
