@@ -10,6 +10,7 @@ import queryRoutes from './routes/queries.js';
 import productCategoryRoutes from './routes/product-category.js';
 import cartRoutes from './routes/cart.js';
 import ratingRoutes from './routes/rating.js';
+import paymentDetailRoutes from './routes/payment-detail.js';
 import orderHistoryRoutes from './routes/order-history.js'
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/queries', queryRoutes);
 app.use('/api/product-category', productCategoryRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/rating', ratingRoutes);
+app.use('/api/payment-detail', paymentDetailRoutes);
 app.use('/api/order-history',orderHistoryRoutes)
 
 app.use('/', (req, res) => {

@@ -68,9 +68,19 @@ export const updateRating =
   'UPDATE rating SET user_id= ?,product_id= ?, rating = ?,review= ? WHERE rating_id = ?;';
 export const deleteRating = 'DELETE FROM rating WHERE rating_id = ?;';
 
+
+export const selectPaymentDetail = 'SELECT * FROM payment_detail;';
+export const insertPaymentDetail =
+  'INSERT INTO payment_detail (user_id,card_number) VALUES(?, ?);';
+export const updatePaymentDetail =
+  'UPDATE payment_detail SET user_id= ?, card_number= ? WHERE payment_id = ?;';
+export const deletePaymentDetail =
+  'DELETE FROM payment_detail WHERE payment_id = ?;';
+
 export const selectOrderHistory = 'SELECT * FROM order_history;';
 export const insertOrderHistory =
   'INSERT INTO order_history (user_id,payment_id,address_id,delivery_date) VALUES(?, ?, ?,?);';
 export const updateOrderHistory =
   'UPDATE order_history SET user_id= ?,payment_id= ?, address_id = ?,delivery_date= ? WHERE order_id = ?;';
 export const deleteOrderHistory = 'DELETE FROM order_history WHERE order_id = ?;';
+
