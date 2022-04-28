@@ -133,3 +133,39 @@ export const deleteProduct = async (deletedData) => {
     errorHandler(error);
   }
 };
+
+export const createOrderDetail = async (newData) => {
+  try {
+    const { data } = await api.createOrderDetail(newData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const retrieveOrderDetails = async () => {
+  try {
+    const { data } = await api.retrieveOrderDetails();
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const updateOrderDetail = async (updatedData) => {
+  try {
+    const { data } = await api.updateOrderDetail(updatedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
+export const deleteOrderDetail = async (deletedData) => {
+  try {
+    const { data } = await api.deleteOrderDetail(deletedData);
+    return data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
