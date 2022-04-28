@@ -113,6 +113,10 @@ const OrderHistory = () => {
                 columns={Object.keys(orderHistories[0]).map((key) => ({
                   dataField: key,
                   text: key,
+                  formatter:
+                    key === 'delivery_date'
+                      ? (cell) => cell.split('T')[0]
+                      : null,
                 }))}
                 rowEvents={{ onClick: onRowClick }}
               />
@@ -126,6 +130,7 @@ const OrderHistory = () => {
                   <Form.Label>Order Id</Form.Label>
                   <Form.Control
                     required
+                    disabled
                     value={order_id}
                     type="text"
                     name="order_id"
@@ -193,8 +198,8 @@ const OrderHistory = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Delivery Date</Form.Label>
                 <Form.Control
+                  value={delivery_date.split('T')[0]}
                   required
-                  value={delivery_date}
                   type="date"
                   name="delivery_date"
                   onChange={handleChange}
